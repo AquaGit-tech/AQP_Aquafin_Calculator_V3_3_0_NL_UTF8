@@ -2,7 +2,7 @@
   "name": "Aquafin Calculator",
   "short_name": "Aquafin",
   "description": "Aquafin verbruikcalculator voor de uitvoerder",
-  "start_url": "AQP_Aquafin_Calculator_V3_3_0_NL_UTF8.html",
+  "start_url": ".",
   "scope": ".",
   "display": "standalone",
   "orientation": "any",
