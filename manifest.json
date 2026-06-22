@@ -1,0 +1,38 @@
+{
+  "name": "Aquafin Calculator",
+  "short_name": "Aquafin",
+  "description": "Aquafin verbruikcalculator voor de uitvoerder",
+  "start_url": "AQP_Aquafin_Calculator_V3_3_0_NL_UTF8.html",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#33B2D2",
+  "background_color": "#000000",
+  "lang": "nl",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": [
+    "business",
+    "productivity",
+    "utilities"
+  ]
+}
