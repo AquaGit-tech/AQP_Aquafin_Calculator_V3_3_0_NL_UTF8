@@ -1,7 +1,7 @@
 /* AQP Aquafin Calculator V3.3.0 (nl) - service worker
    Offline-werking op de werf. navigate=network-first, assets=cache-first.
    Deploy = index.html in mapwortel; precache de wortel-navigatie ('./'). */
-var CACHE = 'aqp-aquafin-nl-v3-6-3';
+var CACHE = 'aqp-aquafin-nl-v4-0-0';
 self.addEventListener('install', function(e) {
     e.waitUntil(caches.open(CACHE).then(function(c) {
         return c.addAll(['./']).catch(function() {});
