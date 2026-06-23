@@ -438,7 +438,7 @@
 
     <script>
         // === Vertalingen (per taal ingevuld door de generator) ===
-        var T = {"lang": "nl", "locale": "nl-BE", "title": "Aquafin Calculator", "clientPh": "Naam klant of adres werken", "productLabel": "Product", "productPh": "Kies Aquafin product", "layersLabel": "Aantal lagen", "layersPh": "Aantal lagen", "surfaceLabel": "Totale oppervlakte", "surfacePh": "Totaal oppervlak (m²)", "resultLabel": "Verbruik per laag", "resetAria": "Reset", "mengTitle": "Meng-hulp", "mengPoederPh": "Poeder (kg)", "ratioWord": "verhouding", "optWord": "optioneel", "takeWord": "Mee te nemen", "bagsWord": "zakken", "setsWord": "sets", "layerSingular": "laag", "layerPlural": "lagen", "colon": ":", "totalWord": "totaal", "powder": "poeder", "liquid": "vloeistof", "colWater": "water", "colWaterMax": "water (max.)", "maxWord": "max.", "unitKg": "kg", "unitL": "L", "unitM2": "m²", "noteBoldTpl": "{naam} is een 2-componentenproduct.", "noteRestTpl": "Poeder + vloeistof (dispersie), verhouding {ratio} - geleverd als set, meng beide volledig. Water is optioneel, {watermax}, enkel voor de verwerkbaarheid.", "waterMaxTpl": "max. {amt} L per {setkg} kg set", "m30Option": "Asocret M30 (afwerking)", "dikteLabel": "Laagdikte afwerking (mm)", "resultAfwerk": "Verbruik afwerkingslaag", "afwerkWord": "afwerking", "m30Note": "Asocret M30 - uitsluitend voor de afwerkingslaag, in 1 laag. Standaard 5 mm (TDS: 3-30 mm). Verbruik 1,4 kg/m² per mm. 1-component: water 4,5-5,25 L per zak van 25 kg.", "footer": "Verbruik volgens AQP-standaard (dichtingscalculator V7) en Schomburg TDS. Indicatief. Vloeistof (2K/RB400) in L bij dispersiedichtheid ~1,0 kg/L."};
+        var T = {"lang": "nl", "locale": "nl-BE", "title": "Aquafin Calculator", "clientPh": "Naam klant of adres werken", "productLabel": "Product", "productPh": "Kies Aquafin product", "layersLabel": "Aantal lagen", "layersPh": "Aantal lagen", "surfaceLabel": "Totale oppervlakte", "surfacePh": "Totaal oppervlak (m²)", "resultLabel": "Verbruik", "resetAria": "Reset", "mengTitle": "Meng-hulp", "mengPoederPh": "Poeder (kg)", "ratioWord": "verhouding", "optWord": "optioneel", "takeWord": "Mee te nemen", "bagsWord": "zakken", "setsWord": "sets", "layerSingular": "laag", "layerPlural": "lagen", "colon": ":", "totalWord": "totaal", "powder": "poeder", "liquid": "vloeistof", "colWater": "water", "colWaterMax": "water (max.)", "maxWord": "max.", "unitKg": "kg", "unitL": "L", "unitM2": "m²", "noteBoldTpl": "{naam} is een 2-componentenproduct.", "noteRestTpl": "Poeder + vloeistof (dispersie), verhouding {ratio} - geleverd als set, meng beide volledig. Water is optioneel, {watermax}, enkel voor de verwerkbaarheid.", "waterMaxTpl": "max. {amt} L per {setkg} kg set", "m30Option": "Asocret M30 (afwerking)", "dikteLabel": "Laagdikte afwerking (mm)", "resultAfwerk": "Verbruik afwerkingslaag", "afwerkWord": "afwerking", "m30Note": "Asocret M30 - uitsluitend voor de afwerkingslaag, in 1 laag. Standaard 5 mm (TDS: 3-30 mm). Verbruik 1,4 kg/m² per mm. 1-component: water 4,5-5,25 L per zak van 25 kg.", "footer": "Verbruik volgens AQP-standaard (dichtingscalculator V7) en Schomburg TDS. Indicatief. Vloeistof (2K/RB400) in L bij dispersiedichtheid ~1,0 kg/L."};
 
         // Gezaghebbende verbruikswaarden (taalneutraal): AQP dichtingscalculator V7 + Schomburg TDS.
         var PRODUCTS = {
@@ -739,14 +739,14 @@
             if (p.afwerking) {
                 var dikte = pnum(document.getElementById('dikteMm').value);
                 if (dikte <= 0) { toonLeeg(); return; }
-                document.getElementById('resultLabel').textContent = T.resultAfwerk;
+                document.getElementById('resultLabel').textContent = T.resultLabel;
                 document.getElementById('headRow').innerHTML =
                     '<th></th><th>' + p.naam + '</th><th>' + T.colWater + '</th>';
                 var m30kg = oppervlakte * p.kgPerMm * dikte;     // 1,4 kg/m2/mm (TDS)
                 var m30poeder = hoeveelCel(m30kg, T.unitKg, p.verpakKg, T.unitKg);
                 var m30water = nf(m30kg * p.waterMinPerKg, 1) + '-' + nf(m30kg * p.waterMaxPerKg, 1) + ' ' + T.unitL;
                 document.getElementById('lagenBody').innerHTML =
-                    '<tr><td>' + T.afwerkWord + ' ' + nf(dikte, 0) + ' mm' + T.colon + '</td><td>' + m30poeder + '</td><td>' + m30water + '</td></tr>';
+                    '<tr><td>' + T.afwerkWord + T.colon + '</td><td>' + m30poeder + '</td><td>' + m30water + '</td></tr>';
                 document.getElementById('totaalRow').innerHTML = '';
                 noteEl.innerHTML = T.m30Note;
                 noteEl.style.display = 'block';
